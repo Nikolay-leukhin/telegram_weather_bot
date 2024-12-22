@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os
 from bot import *
 
-
+# Здесь запускается бот
 async def main():
     load_dotenv()
 

@@ -3,6 +3,10 @@ from dataclasses import dataclass
 from typing import Dict, Any, List
 
 
+# Этот файл содержит реализацию клиента для взаимодействия с API погоды
+# и модель данных для представления информации о погоде.
+
+
 class Api:
     url = "http://127.0.0.1:5000"
 

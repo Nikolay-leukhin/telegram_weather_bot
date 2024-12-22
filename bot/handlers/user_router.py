@@ -6,6 +6,9 @@ from bot.lexicon import Lexicon as lx
 
 router: Router = Router()
 
+# Этот файл содержит базовые маршруты для Telegram-бота, включая приветственное сообщение
+# и команду помощи. Маршруты обрабатывают команды /start и /help.
+
 
 @router.message(CommandStart())
 async def welcome_process(msg: Message):

@@ -13,6 +13,10 @@ from service.api import Api, WeatherModel
 router: Router = Router()
 api = Api()
 
+# Этот файл реализует маршруты для взаимодействия с пользователем в Telegram-боте.
+# Основная функциональность включает сбор данных от пользователя,
+# передачу их в API сервиса погоды и отображение результатов.
+
 
 @router.message(Command(commands='weather'))
 async def get_weather_process(msg: Message, state: FSMContext):
