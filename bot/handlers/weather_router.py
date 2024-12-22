@@ -75,12 +75,16 @@ async def confirm_weather_data_process(cb: CallbackQuery, state: FSMContext):
 
     if data == "confirmed_weather":
         await cb.message.answer("ЗАЗАГРУЖАЕМ ДАНННЫЕЕЕЕЕ!!!!!!!!")
-        state_data = await state.get_data()
-        points = [state_data['start_point']] + state_data['extra_points'] + [state_data['end_point']]
-        weather_data = api.get_weather(state_data['days'], points)
-        line = WeatherModel.format_weather_data(weather_data)
-        await cb.message.answer(line)
-        await state.clear()
+        try:
+            state_data = await state.get_data()
+            points = [state_data['start_point']] + state_data['extra_points'] + [state_data['end_point']]
+            weather_data = api.get_weather(state_data['days'], points)
+            line = WeatherModel.format_weather_data(weather_data)
+            await cb.message.answer(line)
+            await state.clear()
+        except Exception as ex:
+            await cb.message.answer(str(ex) + ' попробуй в дургой раз')
+            await state.clear()
 
     elif data == "change_weather":
         await cb.message.answer(
